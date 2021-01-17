@@ -13,7 +13,6 @@ function setMovieData(movieIndex, moviePrice) {
     localStorage.setItem('selectedPrice', moviePrice);
 }
 
-
 // Update count & total
 function update() {
 
@@ -23,7 +22,7 @@ function update() {
         [...seats].indexOf(seat)
     );
 
-    //Local storage
+    // Local storage
     localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
 
@@ -37,7 +36,6 @@ function update() {
 
     total.innerText = `R$ ${totalValue}`;
     totalSeats.innerText = 49 - ticketsNumber;
-
 }
 
 // Populate UI
@@ -74,7 +72,7 @@ seats.forEach(element => {
 // Selecionar Filme
 select.addEventListener('change', (e) => {
 
-    //Local storage
+    // Local storage
     setMovieData(e.target.selectedIndex, +e.target.value);
 
     update();   

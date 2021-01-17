@@ -1,27 +1,52 @@
 const seats = document.querySelectorAll('.seat');
-var availableSeats = document.querySelectorAll('.available');
+const tickets = document.getElementById('tickets');
+const total = document.getElementById('total');
+const select = document.getElementById('select');
 
-count = 0;
-disponivel = 46;
+var totalSeats = document.getElementById('totalSeats');
 
 
+// Update count & total
+function update() {
 
-//Selecionar Seat
+    var selectedSeats = document.querySelectorAll('.selected');
+
+    const seatsIndex = [...selectedSeats].map((seat) =>
+        [...seats].indexOf(seat)
+    );
+
+
+    tickets.innerText = seatsIndex.length - 1;
+
+    var ticketsValue = tickets.innerText;
+
+    var ticketsNumber = parseInt(ticketsValue,10);
+
+    totalValue = ticketsNumber * select.value;
+
+    total.innerText = `R$ ${totalValue}`;
+    totalSeats.innerText = 49 - ticketsNumber
+    
+}
+
+
+// Selecionar Seat
 seats.forEach(element => {
     element.addEventListener('click', (e) => {
         if(e.target.classList.contains('available')) {
-            e.target.classList.toggle('selected');
-            var selectedSeats = document.querySelectorAll('.selected'); 
-            
-            var SelectedSeatsArr = Array.prototype.slice.call(selectedSeats);
-
-            
-            console.log(SelectedSeatsArr)
-
-            console.log(disponivel);
+            e.target.classList.toggle('selected');    
         } 
+
+        update();
     });
 });
+
+// Selecionar Filme
+select.addEventListener('change', (e) => {
+
+    update();
+});
+
 
 
 
